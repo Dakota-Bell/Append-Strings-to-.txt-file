@@ -51,7 +51,8 @@ void EnterGame(string gameName, string choice){
 	if(choice == "yes"){
 		cout << "Enter the game you want to add to the list: ";
 		string gameName;
-		cin.ignore();
+		cin.ignore(); // ignores the choice so you can actually enter the 
+			      // gameName var that you want
 		getline(cin, gameName);
 	}
 	else if(choice == "no"){
