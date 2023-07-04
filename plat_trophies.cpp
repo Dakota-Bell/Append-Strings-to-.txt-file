@@ -10,13 +10,14 @@ Program: Program will ask you if you would like to enter in a game you have plat
 
 // Include f stream so you can append to a file with a list of games I've platinumed or plan to platinum
 #include <iostream>
+#include <string.h>
 #include <string>
 #include <fstream>
 using namespace std;
 
 
 // DEFINITIONS
-void EnterGame(string gameName, string choice);
+string EnterGame(string gameName, string choice);
 
 // DRIVER
 int main(){
@@ -40,22 +41,25 @@ int main(){
 	// var for adding game name
 	outfile.open("platinumgames.txt", ios::app);
 	string gameName;
-	EnterGame(gameName, choice);
-	outfile << "\n-" << gameName;
+	string game = EnterGame(gameName, choice);
+	outfile << "\n-" << game;
 	
 	return 0;
 }
 
 // DECLARATIONS
-void EnterGame(string gameName, string choice){
+string EnterGame(string gameName, string choice){
 	if(choice == "yes"){
 		cout << "Enter the game you want to add to the list: ";
 		string gameName;
 		cin.ignore(); // ignores the choice so you can actually enter the 
 			      // gameName var that you want
-		getline(cin, gameName);
+		getline(cin,gameName);
+		return gameName;
 	}
 	else if(choice == "no"){
 		cout << "Whyyyyyyyyyyyy? ";
+		//return gameName;
 	}
+	return gameName;
 }
