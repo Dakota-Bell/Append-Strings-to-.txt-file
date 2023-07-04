@@ -41,7 +41,9 @@ int main(){
 	// var for adding game name
 	outfile.open("platinumgames.txt", ios::app);
 	string gameName;
+	// game var set equal to function call 
 	string game = EnterGame(gameName, choice);
+	// call game var so your entry is written in the .txt file
 	outfile << "\n-" << game;
 	
 	return 0;
