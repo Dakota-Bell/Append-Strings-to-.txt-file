@@ -20,11 +20,10 @@ using namespace std;
 string EnterGame(string gameName, string choice);
 
 // DRIVER
-int main(){
-	// creates an outfile.txt
-	ofstream outfile;
-	// open file and check for fail, at end of statement you close the file
-	ifstream platfile("platinumgames.txt");
+int main()
+{
+	ofstream outfile;// creates an outfile.txt
+	ifstream platfile("platinumgames.txt");// open file and check for fail, at end of statement you close the file
 	//check for failure opening the file
 	if(platfile.fail()){
 		cout << "File not found";
@@ -34,26 +33,32 @@ int main(){
 	
 	// variable to get input about choice
 	string choice;
-	cout << "Do you want to enter a game you want to platinum?\n\nType 'yes' or 'no' ";
+	cout << "Would you like to add a game to the list?\n\nType 'yes' or 'no': ";
 	cin >> choice;
-	cout << endl; 
+	cout << endl;
 	
-	// var for adding game name
+	// var for adding game name		  ios::app adds your entry instead of overwriting
 	outfile.open("platinumgames.txt", ios::app);
 	string gameName;
+	string game;
+	
 	// game var set equal to function call 
-	string game = EnterGame(gameName, choice);
-	// call game var so your entry is written in the .txt file
-	outfile << "\n-" << game;
+	game = EnterGame(gameName, choice);		
+	if(choice == "yes")
+	{
+		// call game var so your entry is written in the .txt file
+		outfile << "\n-" << game;		
+	}
+	
 	
 	return 0;
 }
 
-// DECLARATIONS
-string EnterGame(string gameName, string choice){
+	// DECLARATIONS
+string EnterGame(string gameName, string choice)
+{
 	if(choice == "yes"){
 		cout << "Enter the game you want to add to the list: ";
-		string gameName;
 		cin.ignore(); // ignores the choice so you can actually enter the 
 			      // gameName var that you want
 		getline(cin,gameName);
@@ -61,7 +66,6 @@ string EnterGame(string gameName, string choice){
 	}
 	else if(choice == "no"){
 		cout << "Whyyyyyyyyyyyy? ";
-		//return gameName;
 	}
 	return gameName;
 }
