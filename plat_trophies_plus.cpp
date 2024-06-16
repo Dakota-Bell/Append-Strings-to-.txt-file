@@ -22,35 +22,37 @@ void PrintMenu();
 
 // DRIVER
 int main(){
-	// creates an outfile.txt
-	ofstream outfile;
-	// open file and check for fail, at end of statement you close the file
-	ifstream platfile("platinumgames.txt");
-	//check for failure opening the file
-	if(platfile.fail()){
+		ofstream outfile;// creates an outfile.txt
+	ifstream platfile("platinumgames.txt");// open file and check for fail, at end of statement you close the file
+	if(platfile.fail()){//check for failure opening the file
 		cout << "File not found";
 		exit(1);
 		platfile.close();
 	}
-	//PrintMenu();
+	PrintMenu();
 	
-	// variable to get input about choice
-	string choice;
+	string choice;// variable to get input about choice
 	cout << "Do you want to enter a game you want to platinum?\n\nType 'yes' or 'no' ";
 	cin >> choice;
 	cout << endl; 
 	
 	int times = 0;
-	cout << "How many games would you like to add to the list? " << endl;
-	cout << "Number of Games: ";
-	cin >> times;
 	
+	if(choice != "no")
+	{
+		cout << "How many games would you like to add to the list? " << endl;
+		cout << "Number of Games: ";
+		cin >> times;
+	}
+	else
+		return 0;
+	
+	string gameName;
+	string game;
 	
 	// var for adding game name		  ios::app adds your entry instead of overwriting
 	outfile.open("platinumgames.txt", ios::app);
 	for(int i = times; i > 0; i--){
-		string gameName;
-		string game;
 		// game var set equal to function call 
 		game = EnterGame(gameName, choice);
 		// call game var so your entry is written in the .txt file
